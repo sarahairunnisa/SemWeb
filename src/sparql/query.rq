@@ -1,0 +1,41 @@
+PREFIX sociolla: <http://www.semantic.org/ontologies/sociolla#>
+SELECT (STR(?id) AS ?productId) (STR(?productName) AS ?productNameStr) (STR(?price) AS ?priceStr) (STR(?brandName) AS ?brandNameStr) (STR(?categoryName) AS ?categoryNameStr)
+WHERE {
+  ?product a sociolla:Product ;
+           sociolla:id ?id ;
+           sociolla:productName ?productName ;
+           sociolla:price ?price ;
+           sociolla:belongsToBrand ?brand ;
+           sociolla:belongsToCategory ?category.
+  
+  ?brand sociolla:brandName ?brandName .
+  ?category sociolla:categoryName ?categoryName.
+}
+
+PREFIX sociolla: <http://www.semantic.org/ontologies/sociolla#>
+SELECT (STR(?id) AS ?productId) (STR(?productName) AS ?productNameStr) (STR(?price) AS ?priceStr) (STR(?brandName) AS ?brandNameStr)
+WHERE {
+  ?product a sociolla:Product ;
+           sociolla:id ?id ;
+           sociolla:productName ?productName ;
+           sociolla:price ?price ;
+           sociolla:belongsToCategory ?category ;
+           sociolla:belongsToBrand ?brand.
+ 
+  ?category sociolla:categoryName "Hair Styling Products".
+  ?brand sociolla:brandName ?brandName.
+}
+
+PREFIX sociolla: <http://www.semantic.org/ontologies/sociolla#>
+SELECT (STR(?id) AS ?productId) (STR(?productName) AS ?productNameStr) (STR(?price) AS ?priceStr) (STR(?categoryName) AS ?categoryNameStr)
+WHERE {
+  ?product a sociolla:Product ;
+           sociolla:id ?id ;
+           sociolla:productName ?productName ;
+           sociolla:price ?price ;
+           sociolla:belongsToBrand ?brand ;
+           sociolla:belongsToCategory ?category .
+  
+  ?brand sociolla:brandName "nacific" .
+  ?category sociolla:categoryName ?categoryName .
+}
